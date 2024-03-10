@@ -11,10 +11,13 @@ public class LevelMenuController : MonoBehaviour
 
     public float delayTime = 0.5f;
 
+    AudioManager audioManager;
+
     private void Awake()
     {
         int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
         InitializeButtons(unlockedLevel);
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     //private void Awake()
     //{
@@ -65,23 +68,18 @@ public class LevelMenuController : MonoBehaviour
     {
         string levelName = "Level " + levelId;
         StartCoroutine(LoadLevelWithDelay(levelName));
+        audioManager.StopMusic();
     }
 
     private IEnumerator LoadLevelWithDelay(string levelName)
     {
-        // Load scene
         SceneManager.LoadScene(levelName);
-
         // Đợi cho một phần nhỏ của frame hiện tại
         yield return null;
+        audioManager.PlayMusic();
         HeathManager.instance.ResetLives();
-
         Timer.ResetTimer();
-
-        // Ẩn tất cả các menu
         MenuManager.instance.HideMenuAll();
-
-        // Setup new level
         GameManager.instance.SetupNewLevel();
     }
 }
