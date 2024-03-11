@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 203899306}
   - component: {fileID: 203899305}
   m_Layer: 5
-  m_Name: Setting Btn
+  m_Name: TrophyBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4109,6 +4109,7 @@ MonoBehaviour:
   wallTouch: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
   portalIn: {fileID: 8300000, guid: f15063bf3dcd49944a8d2e215c2319c4, type: 3}
   portalOut: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+  itemCollected: {fileID: 8300000, guid: 7a5b4ad3eb7e8304592d7a99435ed69a, type: 3}
 --- !u!4 &901972641
 Transform:
   m_ObjectHideFlags: 0
@@ -5004,7 +5005,7 @@ MonoBehaviour:
   m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.721
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -9036,16 +9037,16 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1588482592}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1763276428
 MonoBehaviour:

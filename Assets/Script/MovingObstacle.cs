@@ -16,13 +16,12 @@ public class MovingObstacle : MonoBehaviour
     int pointCount;
     int direction = 1;
 
-    
     int speedMultiplier = 1;
 
     private void Awake()
     {
         wayPoints = new Transform[ways.transform.childCount];
-        for(int i = 0; i < ways.gameObject.transform.childCount; i++)
+        for (int i = 0; i < ways.gameObject.transform.childCount; i++)
         {
             wayPoints[i] = ways.transform.GetChild(i).gameObject.transform;
         }
@@ -40,7 +39,7 @@ public class MovingObstacle : MonoBehaviour
         var step = speedMultiplier * speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, targetPos, step);
 
-        if(transform.position == targetPos)
+        if (transform.position == targetPos)
         {
             NextPoint();
         }

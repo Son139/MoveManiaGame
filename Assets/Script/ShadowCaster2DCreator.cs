@@ -62,28 +62,28 @@ public class ShadowCaster2DCreator : MonoBehaviour
     }
 }
 
-    [CustomEditor(typeof(ShadowCaster2DCreator))]
-    public class ShadowCaster2DTileMapEditor : Editor
+[CustomEditor(typeof(ShadowCaster2DCreator))]
+public class ShadowCaster2DTileMapEditor : Editor
+{
+    public override void OnInspectorGUI()
     {
-        public override void OnInspectorGUI()
+        DrawDefaultInspector();
+
+        EditorGUILayout.BeginHorizontal();
+        if (GUILayout.Button("Create"))
         {
-            DrawDefaultInspector();
-
-            EditorGUILayout.BeginHorizontal();
-            if (GUILayout.Button("Create"))
-            {
-                var creator = (ShadowCaster2DCreator)target;
-                creator.Create();
-            }
-
-            if (GUILayout.Button("Remove Shadows"))
-            {
-                var creator = (ShadowCaster2DCreator)target;
-                creator.DestroyOldShadowCasters();
-            }
-            EditorGUILayout.EndHorizontal();
+            var creator = (ShadowCaster2DCreator)target;
+            creator.Create();
         }
 
+        if (GUILayout.Button("Remove Shadows"))
+        {
+            var creator = (ShadowCaster2DCreator)target;
+            creator.DestroyOldShadowCasters();
+        }
+        EditorGUILayout.EndHorizontal();
     }
+
+}
 
 #endif

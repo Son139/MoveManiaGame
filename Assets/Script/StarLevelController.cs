@@ -13,7 +13,6 @@ public class StarLevelController : MonoBehaviour
     public TextMeshProUGUI AmountItemsEarn;
     private int maxStars = 3;
 
-
     private void Awake()
     {
         int levelCurrent = GameManager.instance.GetCurrentLevelIndex();

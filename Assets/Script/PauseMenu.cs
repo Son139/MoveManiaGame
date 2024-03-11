@@ -10,18 +10,11 @@ public class PauseMenu : MonoBehaviour
 
     private bool fromPauseGame = false;
 
-    AudioManager audioManager;
-
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
-
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
         fromPauseGame = true;
-        audioManager.PauseMusic();
+        AudioManager.instance.PauseMusic();
         Time.timeScale = 0;
     }
 
@@ -30,7 +23,7 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadSceneAsync("Main Menu");
         MenuManager.instance.ShowMainMenu();
         GameManager.instance.hideGameObject();
-        audioManager.RestartMusic();
+        AudioManager.instance.RestartMusic();
         if (pauseMenu != null && !pauseMenu.IsDestroyed())
         {
             pauseMenu.SetActive(false);
@@ -40,28 +33,39 @@ public class PauseMenu : MonoBehaviour
 
     public void NextLevel()
     {
-        audioManager.StopMusic();
+        AudioManager.instance.StopMusic();
         SceneManager.LoadScene("Main Menu");
         MenuManager.instance.ShowSelectLevelMenu();
         GameManager.instance.hideGameObject();
-        pauseMenu.SetActive(false);
+        if(pauseMenu != null && !pauseMenu.IsDestroyed())
+        {
+            pauseMenu.SetActive(false);
+        }
+        else
+        {
+            pauseMenu = FindObjectOfType<PauseMenu>().gameObject;
+        }
         Time.timeScale = 1;
     }
 
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        audioManager.RestartMusic();
-        pauseMenu?.SetActive(false);
+        AudioManager.instance.RestartMusic();
+        if (pauseMenu != null && !pauseMenu.IsDestroyed())
+        {
+            pauseMenu.SetActive(false);
+        }
+        ItemController.ResetStarsCollected();
         Timer.ResetTimer();
-        HeathManager.instance.ResetLives();                                           
+        HeathManager.instance.ResetLives();
         Time.timeScale = 1;
     }
 
     public void ResumeGame()
     {
         pauseMenu?.SetActive(false);
-        audioManager.UnpauseMusic();
+        AudioManager.instance.UnpauseMusic();
         Time.timeScale = 1;
     }
 }

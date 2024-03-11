@@ -11,14 +11,12 @@ public class PortalController : MonoBehaviour
 
     MovementController movementController;
 
-    AudioManager audioManager;
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         anim = player.GetComponent<Animation>();
         playerRb = player.GetComponent<Rigidbody2D>();
         movementController = player.GetComponent<MovementController>();
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -35,7 +33,7 @@ public class PortalController : MonoBehaviour
 
     IEnumerator PortalIn()
     {
-        audioManager.PlaySFX(audioManager.portalIn);
+        AudioManager.instance.PlaySFX(AudioManager.instance.portalIn);
         playerRb.simulated = false;
         anim.Play("Portal In");
         StartCoroutine(MoveInPortal());
@@ -43,7 +41,7 @@ public class PortalController : MonoBehaviour
         movementController.UpdateShouldFlip(false);
         player.transform.position = destination.position;
         anim.Play("Portal Out");
-        audioManager.PlaySFX(audioManager.portalOut);
+        AudioManager.instance.PlaySFX(AudioManager.instance.portalOut);
         yield return new WaitForSeconds(0.5f);
         playerRb.simulated = true;
         yield return new WaitForSeconds(0.5f);

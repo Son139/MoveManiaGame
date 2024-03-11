@@ -14,7 +14,7 @@ public class FinishPoint : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if(goNextLevel)
+            if (goNextLevel)
             {
                 //UnlockNextLevel();
                 completedLevel.SetActive(true);
@@ -24,7 +24,7 @@ public class FinishPoint : MonoBehaviour
             }
             else
             {
-                GameManager.instance.LoadScene(levelName);   
+                GameManager.instance.LoadScene(levelName);
             }
         }
     }

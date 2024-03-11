@@ -28,7 +28,7 @@ public class MovingPlatform : MonoBehaviour
         playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
 
         wayPoints = new Transform[ways.transform.childCount];
-        for(int i = 0; i < ways.gameObject.transform.childCount; i++)
+        for (int i = 0; i < ways.gameObject.transform.childCount; i++)
         {
             wayPoints[i] = ways.transform.GetChild(i).gameObject.transform;
         }
@@ -44,7 +44,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position, targetPos) < 0.05f) 
+        if (Vector2.Distance(transform.position, targetPos) < 0.05f)
         {
             NextPoint();
         }
@@ -60,12 +60,12 @@ public class MovingPlatform : MonoBehaviour
         transform.position = targetPos;
         moveDirection = Vector3.zero;
 
-        if(pointIndex == pointCount - 1)
+        if (pointIndex == pointCount - 1)
         {
             direction = -1;
         }
 
-        if(pointIndex == 0)
+        if (pointIndex == 0)
         {
             direction = 1;
         }

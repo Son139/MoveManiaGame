@@ -29,8 +29,6 @@ public class HeathManager : MonoBehaviour
         currentLives = maxLives;
     }
 
-        
-
     public void LoseLife()
     {
         currentLives--;

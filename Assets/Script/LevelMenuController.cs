@@ -11,13 +11,10 @@ public class LevelMenuController : MonoBehaviour
 
     public float delayTime = 0.5f;
 
-    AudioManager audioManager;
-
     private void Awake()
     {
         int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
         InitializeButtons(unlockedLevel);
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     //private void Awake()
     //{
@@ -56,7 +53,7 @@ public class LevelMenuController : MonoBehaviour
             Color targetColor = new Color(1f, 1f, 1f, interactable ? 1f : disabledAlpha);
             foreach (Image image in childImages)
             {
-                if (image != button.image) // Skip the button's own image
+                if (image != button.image)
                 {
                     image.color = targetColor;
                 }
@@ -64,11 +61,11 @@ public class LevelMenuController : MonoBehaviour
         }
     }
 
-     public void OpenLevel(int levelId)
+    public void OpenLevel(int levelId)
     {
         string levelName = "Level " + levelId;
         StartCoroutine(LoadLevelWithDelay(levelName));
-        audioManager.StopMusic();
+        AudioManager.instance.StopMusic();
     }
 
     private IEnumerator LoadLevelWithDelay(string levelName)
@@ -76,7 +73,7 @@ public class LevelMenuController : MonoBehaviour
         SceneManager.LoadScene(levelName);
         // Đợi cho một phần nhỏ của frame hiện tại
         yield return null;
-        audioManager.PlayMusic();
+        AudioManager.instance.PlayMusic();
         HeathManager.instance.ResetLives();
         Timer.ResetTimer();
         MenuManager.instance.HideMenuAll();

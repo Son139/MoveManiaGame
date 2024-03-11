@@ -28,11 +28,6 @@ public class LevelSelectMenuManager : MonoBehaviour
         FindStarSystems();
     }
 
-    public void Update()
-    {
-        //UpdateStarMenuLevel();
-    }
-
     void FindStarSystems()
     {
         // Tìm tất cả các GameObject có chứa starSystem component
@@ -49,7 +44,6 @@ public class LevelSelectMenuManager : MonoBehaviour
     {
         if (GameManager.instance == null || StarManager.instance == null)
         {
-            Debug.LogError("Lỗi ở đây");
             return;
         }
 
@@ -62,8 +56,8 @@ public class LevelSelectMenuManager : MonoBehaviour
         }
         int levelName = GameManager.instance.GetCurrentLevelIndex();
 
-        GameObject starSystem = starSystems[levelName-1];
-        
+        GameObject starSystem = starSystems[levelName - 1];
+
         Debug.Log("level " + levelName + " :" + starSystem.transform.childCount);
 
         if (starsEarned == 0)

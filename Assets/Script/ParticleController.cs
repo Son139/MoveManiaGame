@@ -24,13 +24,6 @@ public class ParticleController : MonoBehaviour
     [SerializeField] ParticleSystem touchParticle;
     [SerializeField] ParticleSystem dieParticle;
 
-    AudioManager audioManager;
-
-    private void Awake()
-    {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
-    }
-
     private void Start()
     {
         touchParticle.transform.parent = null;
@@ -56,18 +49,18 @@ public class ParticleController : MonoBehaviour
         switch (particle)
         {
             case Particles.touch:
-                audioManager.PlaySFX(audioManager.wallTouch);
+                AudioManager.instance.PlaySFX(AudioManager.instance.wallTouch);
                 touchParticle.transform.position = pos;
                 touchParticle.Play();
                 break;
 
             case Particles.fall:
-                audioManager.PlaySFX(audioManager.wallTouch);
+                AudioManager.instance.PlaySFX(AudioManager.instance.wallTouch);
                 fallParticle.Play();
                 break;
 
             case Particles.die:
-                audioManager.PlaySFX(audioManager.death);
+                AudioManager.instance.PlaySFX(AudioManager.instance.death);
                 dieParticle.transform.position = pos;
                 dieParticle.Play();
                 isOnGround = false;
@@ -76,7 +69,6 @@ public class ParticleController : MonoBehaviour
             default:
                 break;
         }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

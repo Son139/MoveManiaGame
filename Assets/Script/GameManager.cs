@@ -26,11 +26,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        //GetCurrentLevelIndex();
-    }
-
     public void GoToHome()
     {
         SceneManager.LoadSceneAsync("Main Menu");
@@ -45,8 +40,6 @@ public class GameManager : MonoBehaviour
         hideGameObject();
         Time.timeScale = 1;
     }
-
-
 
     public void LoadScene(string sceneName)
     {
