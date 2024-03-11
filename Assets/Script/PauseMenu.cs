@@ -41,10 +41,6 @@ public class PauseMenu : MonoBehaviour
         {
             pauseMenu.SetActive(false);
         }
-        else
-        {
-            pauseMenu = FindObjectOfType<PauseMenu>().gameObject;
-        }
         Time.timeScale = 1;
     }
 
@@ -64,8 +60,11 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        pauseMenu?.SetActive(false);
-        AudioManager.instance.UnpauseMusic();
+        if (pauseMenu != null && !pauseMenu.IsDestroyed())
+        {
+            pauseMenu.SetActive(false);
+        }
         Time.timeScale = 1;
+        AudioManager.instance.UnpauseMusic();
     }
 }

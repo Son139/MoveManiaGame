@@ -44,6 +44,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic()
     {
+        musicSource.clip = background;
         musicSource.Play();
     }
 
@@ -64,7 +65,7 @@ public class AudioManager : MonoBehaviour
 
     public void RestartMusic()
     {
-        musicSource.Stop();
-        musicSource.Play();
+        StopMusic();
+        PlayMusic();
     }
 }

@@ -46,7 +46,7 @@ AudioMixerController:
   m_ExposedParameters:
   - guid: 0b60c4ae59a69514c94f306603f29e85
     name: music
-  - guid: f0ab9e973b055fb4d9f7f0860fbe5390
+  - guid: e03de4a38e00e0145ad88c063fe541ba
     name: SFX
   m_AudioMixerGroupViews:
   - guids:
@@ -121,39 +121,10 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -7202286113596999803}
-  - {fileID: 1511404986072620394}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!244 &1511404986072620394
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: 03528852ca3c13f438eff22c55c740cc
-  m_EffectName: Duck Volume
-  m_MixLevel: ea8fcfa1936f06f48b0945944d767cca
-  m_Parameters:
-  - m_ParameterName: Threshold
-    m_GUID: 10e6d4fc37bfce0449c4a37b89a5db99
-  - m_ParameterName: Ratio
-    m_GUID: ccb8e4f34763ec046bff4e9a425df50c
-  - m_ParameterName: Attack Time
-    m_GUID: cf680f9b9b558f44493bc11b82efef59
-  - m_ParameterName: Release Time
-    m_GUID: ddb175ba703e1d64aaa340b8cdfa0f0c
-  - m_ParameterName: Make-up Gain
-    m_GUID: 1f326442885926843988e42c447e00b1
-  - m_ParameterName: Knee
-    m_GUID: 54ded5379db135b4baee87d5c5f16f4c
-  - m_ParameterName: Sidechain Mix
-    m_GUID: b83d073280732fa43a2ff8949d7a1ef4
-  m_SendTarget: {fileID: 0}
-  m_EnableWetMix: 0
-  m_Bypass: 0
 --- !u!243 &4080409825344319026
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -169,22 +140,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -5105249543817113904}
-  - {fileID: 4185999945785272469}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
---- !u!244 &4185999945785272469
-AudioMixerEffectController:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_EffectID: 0ede415a11fe6534faba92118dc910d9
-  m_EffectName: Send
-  m_MixLevel: 8fb940546b53f994b9cc4a684305cb85
-  m_Parameters: []
-  m_SendTarget: {fileID: 1511404986072620394}
-  m_EnableWetMix: 0
-  m_Bypass: 0

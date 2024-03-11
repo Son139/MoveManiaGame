@@ -12,37 +12,37 @@ public class VolumeSettings : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("musicVolumn"))
+        if (PlayerPrefs.HasKey("musicVolume"))
         {
-            LoadVolumn();
+            LoadVolume();
         }
         else
         {
-            SetMusicVolumn();
-            SetSFXVolumn();
+            SetMusicVolume();
+            SetSFXVolume();
         }
     }
 
-    public void SetMusicVolumn()
+    public void SetMusicVolume()
     {
         float volume = musicSlider.value;
         audioMixer.SetFloat("music", Mathf.Log10(volume) * 20);
-        PlayerPrefs.SetFloat("musicVolumn", volume);
+        PlayerPrefs.SetFloat("musicVolume", volume);
     }
-    public void SetSFXVolumn()
+    public void SetSFXVolume()
     {
         float volume = sfxSlider.value;
-        float volumeInDecibels = Mathf.Log10(volume) * 20;
-        audioMixer.SetFloat("SFX", volumeInDecibels);
-        PlayerPrefs.SetFloat("SFXVolumn", volume);
+        audioMixer.SetFloat("SFX", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("SFXVolume", volume);
+        Debug.Log("SFX: "+volume);
     }
 
-    private void LoadVolumn()
+    private void LoadVolume()
     {
-        musicSlider.value = PlayerPrefs.GetFloat("musicVolumn", 0.5f);
-        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolumn", 0.5f);
+        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
 
-        SetMusicVolumn();
-        SetSFXVolumn();
+        SetMusicVolume();
+        SetSFXVolume();
     }
 }

@@ -65,15 +65,15 @@ public class LevelMenuController : MonoBehaviour
     {
         string levelName = "Level " + levelId;
         StartCoroutine(LoadLevelWithDelay(levelName));
-        AudioManager.instance.StopMusic();
     }
 
     private IEnumerator LoadLevelWithDelay(string levelName)
     {
+        yield return new WaitForSeconds(0.1f);
         SceneManager.LoadScene(levelName);
         // Đợi cho một phần nhỏ của frame hiện tại
         yield return null;
-        AudioManager.instance.PlayMusic();
+        AudioManager.instance.RestartMusic();
         HeathManager.instance.ResetLives();
         Timer.ResetTimer();
         MenuManager.instance.HideMenuAll();
