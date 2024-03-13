@@ -13,6 +13,9 @@ public class StarLevelController : MonoBehaviour
     public TextMeshProUGUI AmountItemsEarn;
     private int maxStars = 3;
 
+    public float[] delays;
+    public float scaleDuration = 1f;
+
     private void Awake()
     {
         int levelCurrent = GameManager.instance.GetCurrentLevelIndex();
@@ -35,14 +38,32 @@ public class StarLevelController : MonoBehaviour
         return starsEarned;
     }
 
-    private void DisplayStars(int starEarned)
+    private void DisplayStars(int starsEarned)
     {
-        //HideAllStars();
-        for (int i = 0; i < starEarned; i++)
+        for (int i = 0; i < maxStars; i++)
         {
-            starEmpty[i].SetActive(false);
-            starFilled[i].SetActive(true);
+            if (i < starsEarned)
+            {
+                // Hiển thị và áp dụng animation cho ngôi sao đã kiếm được
+                starEmpty[i].SetActive(false);
+                starFilled[i].SetActive(true);
+                AnimateStar(starFilled[i], delays[i]);
+            }
+            else
+            {
+                // Hiển thị và áp dụng animation cho ngôi sao không kiếm được
+                starEmpty[i].SetActive(true);
+                starFilled[i].SetActive(false);
+                AnimateStar(starEmpty[i], delays[i]);
+            }
         }
+    }
+
+    private void AnimateStar(GameObject star, float delay)
+    {
+        LeanTween.scale(star, new Vector3(1f, 1f, 1f), scaleDuration)
+            .setDelay(delay)
+            .setEase(LeanTweenType.easeOutElastic);
     }
 
     private void SaveStarsForLevel(int levelIndex, int starsEarned)
@@ -54,17 +75,4 @@ public class StarLevelController : MonoBehaviour
     {
         ItemController.ResetStarsCollected();
     }
-
-    //private void HideAllStars()
-    //{
-    //    foreach (GameObject star in starEmpty)
-    //    {
-    //        star.SetActive(true);
-    //    }
-
-    //    foreach (GameObject star in starFilled)
-    //    {
-    //        star.SetActive(false);
-    //    }
-    //}
 }

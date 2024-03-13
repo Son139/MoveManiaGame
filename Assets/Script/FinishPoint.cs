@@ -18,7 +18,7 @@ public class FinishPoint : MonoBehaviour
             {
                 //UnlockNextLevel();
                 completedLevel.SetActive(true);
-                Time.timeScale = 0f;
+                //Time.timeScale = 0f;
                 LevelSelectMenuManager.instance.UpdateStarMenuLevel();
                 Debug.Log("xuất hiện");
             }
@@ -31,7 +31,7 @@ public class FinishPoint : MonoBehaviour
 
     void UnlockNextLevel()
     {
-        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachdIndex"))
+        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
         {
             PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
             PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", 1) + 1);

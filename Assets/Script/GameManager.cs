@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [SerializeField] Animator transitionAnim;
     public GameObject pauseSystem;
     public GameObject healthSystem;
 
@@ -35,10 +34,10 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         //StartCoroutine(LoadLevel());
-        SceneManager.LoadScene("Main Menu");
-        MenuManager.instance.ShowSelectLevelMenu();
-        hideGameObject();
-        Time.timeScale = 1;
+        //SceneManager.LoadScene("Main Menu");
+        //MenuManager.instance.ShowSelectLevelMenu();
+        //hideGameObject();
+        //Time.timeScale = 1;
     }
 
     public void LoadScene(string sceneName)
@@ -77,7 +76,10 @@ public class GameManager : MonoBehaviour
     //{
     //    transitionAnim.SetTrigger("End");
     //    yield return new WaitForSeconds(1);
-    //    SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+    //    SceneManager.LoadScene("Main Menu");
+    //    MenuManager.instance.ShowSelectLevelMenu();
+    //    hideGameObject();
+    //    Time.timeScale = 1;
     //    HeathManager.instance.ResetLives();
     //    transitionAnim.SetTrigger("Start");
     //}

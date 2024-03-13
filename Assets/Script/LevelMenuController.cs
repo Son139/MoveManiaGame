@@ -64,12 +64,13 @@ public class LevelMenuController : MonoBehaviour
     public void OpenLevel(int levelId)
     {
         string levelName = "Level " + levelId;
+       //SceneManager.LoadScene(levelName);
         StartCoroutine(LoadLevelWithDelay(levelName));
     }
 
     private IEnumerator LoadLevelWithDelay(string levelName)
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(levelName);
         // Đợi cho một phần nhỏ của frame hiện tại
         yield return null;

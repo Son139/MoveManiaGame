@@ -7,13 +7,14 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
+    //[SerializeField] Animator transitionAnim;
 
     private bool fromPauseGame = false;
 
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
-        fromPauseGame = true;
+        //fromPauseGame = true;
         AudioManager.instance.PauseMusic();
         Time.timeScale = 0;
     }
@@ -37,12 +38,19 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
         MenuManager.instance.ShowSelectLevelMenu();
         GameManager.instance.hideGameObject();
-        if(pauseMenu != null && !pauseMenu.IsDestroyed())
+        if (pauseMenu != null && !pauseMenu.IsDestroyed())
         {
             pauseMenu.SetActive(false);
         }
         Time.timeScale = 1;
     }
+
+    //IEnumerator LoadLevel()
+    //{
+    //    transitionAnim.SetTrigger("End");
+
+    //    transitionAnim.SetTrigger("Start");
+    //}
 
     public void RestartGame()
     {
