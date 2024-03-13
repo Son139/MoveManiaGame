@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +10,10 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
     //[SerializeField] Animator transitionAnim;
+    [SerializeField] RectTransform pausePanelRect;
+    [SerializeField] float topPosY, middlePosY;
+    [SerializeField] float tweenDuration;
+    [SerializeField] CanvasGroup canvasGroup;
 
     private bool fromPauseGame = false;
 
@@ -17,6 +23,7 @@ public class PauseMenu : MonoBehaviour
         //fromPauseGame = true;
         AudioManager.instance.PauseMusic();
         Time.timeScale = 0;
+        PausePanelIntro();
     }
 
     public void GoToHome()
@@ -66,13 +73,26 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void ResumeGame()
+    public async void ResumeGame()
     {
+        await PausePanelOutro();
         if (pauseMenu != null && !pauseMenu.IsDestroyed())
         {
             pauseMenu.SetActive(false);
         }
         Time.timeScale = 1;
         AudioManager.instance.UnpauseMusic();
+    }
+
+    void PausePanelIntro()
+    {
+        canvasGroup.DOFade(1, tweenDuration).SetUpdate(true);
+        pausePanelRect.DOAnchorPosY(middlePosY, tweenDuration).SetUpdate(true);
+    }
+
+    async Task PausePanelOutro()
+    {
+        canvasGroup.DOFade(0, tweenDuration).SetUpdate(true);
+        await pausePanelRect.DOAnchorPosY(topPosY, tweenDuration).SetUpdate(true).AsyncWaitForCompletion();
     }
 }

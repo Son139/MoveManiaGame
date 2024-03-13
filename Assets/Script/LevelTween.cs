@@ -29,10 +29,10 @@ public class LevelTween : MonoBehaviour
     void LevelComplete()
     {
         LeanTween.moveLocal(panelCompletedLevel, new Vector3(0f, 0f, 0f), 0.5f).setDelay(.1f).setEase(LeanTweenType.easeOutCirc);
-        LeanTween.scale(homeButton, new Vector3(1f, 1f, 1f), 2f).setDelay(.6f).setEase(LeanTweenType.easeOutElastic);
-        LeanTween.scale(nextLevel, new Vector3(1f, 1f, 1f), 2f).setDelay(.7f).setEase(LeanTweenType.easeOutElastic);
-        LeanTween.scale(replayButton, new Vector3(1f, 1f, 1f), 2f).setDelay(.8f).setEase(LeanTweenType.easeOutElastic);
-        LeanTween.alpha(itemImg.GetComponent<RectTransform>(), 1f, .5f).setDelay(0.6f);
-        LeanTween.alpha(itemCollected.GetComponent<RectTransform>(), 1f, .5f).setDelay(0.6f);
+        LeanTween.scale(homeButton, new Vector3(1f, 1f, 1f), 2f).setDelay(.3f).setEase(LeanTweenType.easeOutElastic);
+        LeanTween.scale(nextLevel, new Vector3(1f, 1f, 1f), 2f).setDelay(.4f).setEase(LeanTweenType.easeOutElastic);
+        LeanTween.scale(replayButton, new Vector3(1f, 1f, 1f), 2f).setDelay(.5f).setEase(LeanTweenType.easeOutElastic);
+        LeanTween.alpha(itemImg.GetComponent<RectTransform>(), 1f, .4f).setDelay(0.5f);
+        LeanTween.alpha(itemCollected.GetComponent<RectTransform>(), 4f, .5f).setDelay(0.5f);
     }
 }
