@@ -30,8 +30,6 @@ public class MovementController : MonoBehaviour
 
     public ParticleController particleCtrl;
 
-    private bool isPrevWallTouch = false;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

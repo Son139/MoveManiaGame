@@ -5,22 +5,25 @@ using UnityEngine.UI;
 
 public class LevelSelectMenuManager : MonoBehaviour
 {
-    public static LevelSelectMenuManager instance;
     public Sprite starFilled;
 
     public List<GameObject> starSystems = new List<GameObject>();
 
+    private static LevelSelectMenuManager instance;
+    public static LevelSelectMenuManager Instance { get { return instance; } }
+
+    // Các thuộc tính khác của LevelSelectMenuManager
+
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+        instance = this;
+
+        // Các thao tác khác trong Awake()
     }
 
     private void Start()
@@ -42,12 +45,13 @@ public class LevelSelectMenuManager : MonoBehaviour
 
     public void UpdateStarMenuLevel()
     {
-        if (GameManager.instance == null || StarManager.instance == null)
+        if (GameManager.instance == null || StarLevelController.instance == null)
         {
             return;
         }
 
-        int starsEarned = StarManager.instance.GetStarsForLevel();
+        int starsEarned = StarLevelController.instance.GetStarsForLevel();
+        Debug.Log("số sao kiếm được: " + starsEarned);
 
         if (starsEarned == 0)
         {

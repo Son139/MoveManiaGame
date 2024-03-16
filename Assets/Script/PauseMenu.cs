@@ -15,8 +15,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] float tweenDuration;
     [SerializeField] CanvasGroup canvasGroup;
 
-    private bool fromPauseGame = false;
-
     public void PauseGame()
     {
         pauseMenu.SetActive(true);

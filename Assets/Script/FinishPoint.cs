@@ -15,15 +15,16 @@ public class FinishPoint : MonoBehaviour
         {
             if (goNextLevel)
             {
-                //UnlockNextLevel();
+                UnlockNextLevel();
                 completedLevel.SetActive(true);
                 LevelTween.instance.LevelComplete();
                 AudioManager.instance.PlaySFX(AudioManager.instance.winGame);
+
                 int remainingLives = HeathManager.instance.GetRemainingLives();
                 LevelTitleManager.instance.UpdateLevelTitle(remainingLives);
-                //Time.timeScale = 0f;
-                LevelSelectMenuManager.instance.UpdateStarMenuLevel();
+
                 StarLevelController.instance.CompletedLevel();
+                LevelSelectMenuManager.Instance.UpdateStarMenuLevel();
             }
             else
             {

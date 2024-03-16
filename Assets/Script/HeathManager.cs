@@ -21,7 +21,6 @@ public class HeathManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -44,7 +43,8 @@ public class HeathManager : MonoBehaviour
             AudioManager.instance.PlaySFX(AudioManager.instance.loseGame);
             completedLevel.SetActive(true);
             LevelTween.instance.LevelComplete();
-            StarLevelController.instance.DisplayStars(0);
+            //StarLevelController.instance.DisplayStars(0);
+            StarLevelController.instance.CompletedLevel();
         }
     }
 

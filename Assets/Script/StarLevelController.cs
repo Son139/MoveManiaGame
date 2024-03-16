@@ -36,10 +36,11 @@ public class StarLevelController : MonoBehaviour
     {
         int levelCurrent = GameManager.instance.GetCurrentLevelIndex();
         int starsEarned = CalculateStarsEarned();
-        Debug.Log(starsEarned);
-        DisplayStars(starsEarned);
-        AmountItemsEarn.text = starsEarned.ToString();
+        int itemsCollected = GetItemsCollected();
+        Debug.Log("item thu được: " + itemsCollected);
         SaveStarsForLevel(levelCurrent, starsEarned);
+        AmountItemsEarn.text = itemsCollected.ToString();
+        DisplayStars(starsEarned);
         ResetStarsCollected();
     }
 
@@ -47,7 +48,8 @@ public class StarLevelController : MonoBehaviour
     {
         int itemsCollected = ItemController.GetStarsCollected();
         int remainingLives = HeathManager.instance.GetRemainingLives();
-
+        Debug.Log("item thu được: "+itemsCollected);
+        Debug.Log("mạng còn lại: " + remainingLives);
         int starsEarned = itemsCollected - (maxStars - remainingLives);
         starsEarned = Mathf.Max(starsEarned, 0);
         starsEarned = Mathf.Clamp(starsEarned, 0, maxStars);
@@ -83,13 +85,28 @@ public class StarLevelController : MonoBehaviour
             .setEase(LeanTweenType.easeOutElastic);
     }
 
-    private void SaveStarsForLevel(int levelIndex, int starsEarned)
+    public void SaveStarsForLevel(int levelIndex, int starsEarned)
     {
-        StarManager.instance.SaveStarsForLevel(levelIndex, starsEarned);
+        string key = "StarsForLevel" + levelIndex;
+        Debug.Log(key+ " số sao " + starsEarned);
+        PlayerPrefs.SetInt(key, starsEarned);
+        PlayerPrefs.Save();
+    }
+
+    public int GetStarsForLevel()
+    {
+        int levelIndex = GameManager.instance.GetCurrentLevelIndex();
+        string key = "StarsForLevel" + levelIndex;
+        return PlayerPrefs.GetInt(key, 0); // Trả về 0 nếu không tìm thấy dữ liệu
     }
 
     private void ResetStarsCollected()
     {
         ItemController.ResetStarsCollected();
+    }
+
+    private int GetItemsCollected()
+    {
+        return ItemController.GetStarsCollected();
     }
 }
