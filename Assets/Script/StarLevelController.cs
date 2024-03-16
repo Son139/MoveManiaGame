@@ -37,7 +37,6 @@ public class StarLevelController : MonoBehaviour
         int levelCurrent = GameManager.instance.GetCurrentLevelIndex();
         int starsEarned = CalculateStarsEarned();
         int itemsCollected = GetItemsCollected();
-        Debug.Log("item thu được: " + itemsCollected);
         SaveStarsForLevel(levelCurrent, starsEarned);
         AmountItemsEarn.text = itemsCollected.ToString();
         DisplayStars(starsEarned);
@@ -46,10 +45,8 @@ public class StarLevelController : MonoBehaviour
 
     private int CalculateStarsEarned()
     {
-        int itemsCollected = ItemController.GetStarsCollected();
+        int itemsCollected = ItemController.GetItemsCollected();
         int remainingLives = HeathManager.instance.GetRemainingLives();
-        Debug.Log("item thu được: "+itemsCollected);
-        Debug.Log("mạng còn lại: " + remainingLives);
         int starsEarned = itemsCollected - (maxStars - remainingLives);
         starsEarned = Mathf.Max(starsEarned, 0);
         starsEarned = Mathf.Clamp(starsEarned, 0, maxStars);
@@ -102,11 +99,11 @@ public class StarLevelController : MonoBehaviour
 
     private void ResetStarsCollected()
     {
-        ItemController.ResetStarsCollected();
+        ItemController.ResetItemsCollected();
     }
 
     private int GetItemsCollected()
     {
-        return ItemController.GetStarsCollected();
+        return ItemController.GetItemsCollected();
     }
 }

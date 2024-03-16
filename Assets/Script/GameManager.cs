@@ -25,15 +25,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void NextLevel()
-    {
-        //StartCoroutine(LoadLevel());
-        //SceneManager.LoadScene("Main Menu");
-        //MenuManager.instance.ShowSelectLevelMenu();
-        //hideGameObject();
-        //Time.timeScale = 1;
-    }
-
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadSceneAsync(sceneName);

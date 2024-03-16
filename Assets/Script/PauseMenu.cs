@@ -47,6 +47,8 @@ public class PauseMenu : MonoBehaviour
             pauseMenu.SetActive(false);
         }
         Time.timeScale = 1;
+        int nextLevelToUnlock = PlayerPrefs.GetInt("NextLevelToUnlock", -1);
+        Debug.Log("in cái lưu: " + nextLevelToUnlock);
     }
 
     //IEnumerator LoadLevel()
@@ -64,7 +66,7 @@ public class PauseMenu : MonoBehaviour
         {
             pauseMenu.SetActive(false);
         }
-        ItemController.ResetStarsCollected();
+        ItemController.ResetItemsCollected();
         Timer.ResetTimer();
         HeathManager.instance.ResetLives();
         Time.timeScale = 1;

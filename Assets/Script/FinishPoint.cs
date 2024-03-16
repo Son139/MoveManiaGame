@@ -15,7 +15,8 @@ public class FinishPoint : MonoBehaviour
         {
             if (goNextLevel)
             {
-                UnlockNextLevel();
+                MarkNextLevelToUnlock();
+                //UnlockNextLevel();
                 completedLevel.SetActive(true);
                 LevelTween.instance.LevelComplete();
                 AudioManager.instance.PlaySFX(AudioManager.instance.winGame);
@@ -25,6 +26,10 @@ public class FinishPoint : MonoBehaviour
 
                 StarLevelController.instance.CompletedLevel();
                 LevelSelectMenuManager.Instance.UpdateStarMenuLevel();
+
+                // Mở khóa level 2 ngay sau khi kết thúc level 1
+                //PlayerPrefs.SetInt("UnlockedLevel", 2);
+                //PlayerPrefs.Save();
             }
             else
             {
@@ -35,11 +40,22 @@ public class FinishPoint : MonoBehaviour
 
     void UnlockNextLevel()
     {
-        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int reachedIndex = PlayerPrefs.GetInt("ReachedIndex", 1);
+
+        if (currentSceneIndex >= reachedIndex)
         {
-            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("ReachedIndex", currentSceneIndex + 1);
             PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", 1) + 1);
             PlayerPrefs.Save();
         }
+    }
+    void MarkNextLevelToUnlock()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextLevelIndex = currentSceneIndex + 1;
+        PlayerPrefs.SetInt("NextLevelToUnlock", nextLevelIndex);
+        Debug.Log("lưu "+ nextLevelIndex);
+        PlayerPrefs.Save();
     }
 }

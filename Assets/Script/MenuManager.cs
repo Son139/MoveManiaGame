@@ -22,6 +22,11 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
     public void ShowSelectLevelMenu()
     {
         mainMenu.SetActive(false);

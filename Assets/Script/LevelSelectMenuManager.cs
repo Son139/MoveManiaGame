@@ -12,8 +12,6 @@ public class LevelSelectMenuManager : MonoBehaviour
     private static LevelSelectMenuManager instance;
     public static LevelSelectMenuManager Instance { get { return instance; } }
 
-    // Các thuộc tính khác của LevelSelectMenuManager
-
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -22,8 +20,6 @@ public class LevelSelectMenuManager : MonoBehaviour
             return;
         }
         instance = this;
-
-        // Các thao tác khác trong Awake()
     }
 
     private void Start()

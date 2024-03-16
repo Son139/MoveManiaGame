@@ -32,9 +32,6 @@ public class HeathManager : MonoBehaviour
     public void LoseLife()
     {
         currentLives--;
-        //remainingLives = currentLives;
-        //GetCurrentLives();
-        //GetRemainingLives();
         UpdateHeartUI();
         if (currentLives <= 0)
         {

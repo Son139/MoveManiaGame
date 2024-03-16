@@ -10,23 +10,23 @@ public class ItemController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            CollectStar();
+            CollectItem();
             AudioManager.instance.PlaySFX(AudioManager.instance.itemCollected);
             Destroy(gameObject);
         }
     }
 
-    public void CollectStar()
+    public void CollectItem()
     {
         itemCollected++;
     }
 
-    public static int GetStarsCollected()
+    public static int GetItemsCollected()
     {
         return itemCollected;
     }
 
-    public static void ResetStarsCollected()
+    public static void ResetItemsCollected()
     {
         itemCollected = 0;
     }

@@ -11,37 +11,45 @@ public class LevelMenuController : MonoBehaviour
 
     public float delayTime = 0.5f;
 
+
     private void Awake()
     {
-        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
-        InitializeButtons(unlockedLevel);
+        SceneManager.sceneLoaded += OnSceneLoaded; // Đăng ký sự kiện khi scene được load
+        InitializeButtons();
     }
-    //private void Awake()
-    //{
-    //    int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
-    //    InitializeButtons(unlockedLevel);
-    //    //InitializeButtons();
-    //}
 
-    //public void InitializeButtons()
-    //{
-    //    int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
-    //    for (int i = 0; i < buttons.Length; i++)
-    //    {
-    //        bool interactable = i < unlockedLevel;
-    //        buttons[i].interactable = interactable;
-    //        SetButtonState(buttons[i], interactable);
-    //    }
-    //}
-
-    public void InitializeButtons(int unlockedLevel)
+    private void OnDestroy()
     {
+        SceneManager.sceneLoaded -= OnSceneLoaded; // Hủy đăng ký sự kiện khi đối tượng bị hủy
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        InitializeButtons(); // Gọi hàm InitializeButtons() khi scene được load lại
+    }
+
+    public void InitializeButtons()
+    {
+        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+        int nextLevelToUnlock = PlayerPrefs.GetInt("NextLevelToUnlock", 1); // Lấy index của level cần mở khóa
         for (int i = 0; i < buttons.Length; i++)
         {
-            bool interactable = i < unlockedLevel;
-            buttons[i].interactable = interactable;
-            SetButtonState(buttons[i], interactable);
+            buttons[i].interactable = false;
+            SetButtonState(buttons[i], false);
         }
+
+        for (int i = 0; i < nextLevelToUnlock; i++)
+        {
+            buttons[i].interactable = true;
+            SetButtonState(buttons[i], true);
+        }
+
+        // Mở khóa level tiếp theo nếu cần
+        //if (nextLevelToUnlock != -1 && nextLevelToUnlock <= buttons.Length)
+        //{
+        //    buttons[nextLevelToUnlock - 1].interactable = true;
+        //    SetButtonState(buttons[nextLevelToUnlock - 1], true);
+        //}
     }
 
     public void SetButtonState(Button button, bool interactable)
@@ -64,7 +72,6 @@ public class LevelMenuController : MonoBehaviour
     public void OpenLevel(int levelId)
     {
         string levelName = "Level " + levelId;
-       //SceneManager.LoadScene(levelName);
         StartCoroutine(LoadLevelWithDelay(levelName));
     }
 
