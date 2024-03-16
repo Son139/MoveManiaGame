@@ -9,7 +9,6 @@ public class FinishPoint : MonoBehaviour
     [SerializeField] string levelName;
     [SerializeField] GameObject completedLevel;
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -18,9 +17,13 @@ public class FinishPoint : MonoBehaviour
             {
                 //UnlockNextLevel();
                 completedLevel.SetActive(true);
+                LevelTween.instance.LevelComplete();
+                AudioManager.instance.PlaySFX(AudioManager.instance.winGame);
+                int remainingLives = HeathManager.instance.GetRemainingLives();
+                LevelTitleManager.instance.UpdateLevelTitle(remainingLives);
                 //Time.timeScale = 0f;
                 LevelSelectMenuManager.instance.UpdateStarMenuLevel();
-                Debug.Log("xuất hiện");
+                StarLevelController.instance.CompletedLevel();
             }
             else
             {

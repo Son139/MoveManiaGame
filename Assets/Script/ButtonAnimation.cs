@@ -16,6 +16,7 @@ public class ButtonAnimation : MonoBehaviour
 
     void Anim()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         LeanTween.scale(gameObject, upScale, 0.1f);
         LeanTween.scale(gameObject, Vector3.one, 0.1f).setDelay(0.1f);
     }

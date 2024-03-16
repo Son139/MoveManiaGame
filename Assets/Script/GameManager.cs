@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public GameObject pauseSystem;
     public GameObject healthSystem;
-
+    public GameObject finishPoint;
     private void Awake()
     {
         if (instance == null)
@@ -23,12 +23,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-    }
-
-    public void GoToHome()
-    {
-        SceneManager.LoadSceneAsync("Main Menu");
-        Time.timeScale = 1;
     }
 
     public void NextLevel()
@@ -64,13 +58,16 @@ public class GameManager : MonoBehaviour
     {
         pauseSystem?.SetActive(true);
         healthSystem?.SetActive(true);
+        finishPoint?.SetActive(true);
     }
 
-    public void hideGameObject()
+    public void HideGameObject()
     {
         pauseSystem?.SetActive(false);
         healthSystem?.SetActive(false);
+        finishPoint?.SetActive(false);
     }
+
 
     //IEnumerator LoadLevel()
     //{

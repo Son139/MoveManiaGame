@@ -48,7 +48,6 @@ public class LevelSelectMenuManager : MonoBehaviour
         }
 
         int starsEarned = StarManager.instance.GetStarsForLevel();
-        Debug.Log("Số sao ở StarLevelMenu: " + starsEarned);
 
         if (starsEarned == 0)
         {
@@ -57,8 +56,6 @@ public class LevelSelectMenuManager : MonoBehaviour
         int levelName = GameManager.instance.GetCurrentLevelIndex();
 
         GameObject starSystem = starSystems[levelName - 1];
-
-        Debug.Log("level " + levelName + " :" + starSystem.transform.childCount);
 
         if (starsEarned == 0)
         {

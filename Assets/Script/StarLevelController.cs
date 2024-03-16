@@ -8,18 +8,35 @@ using UnityEngine.SceneManagement;
 
 public class StarLevelController : MonoBehaviour
 {
+    public static StarLevelController instance;
     public GameObject[] starEmpty;
     public GameObject[] starFilled;
     public TextMeshProUGUI AmountItemsEarn;
     private int maxStars = 3;
+
+    public bool loseGame = false;
 
     public float[] delays;
     public float scaleDuration = 1f;
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void CompletedLevel()
+    {
         int levelCurrent = GameManager.instance.GetCurrentLevelIndex();
         int starsEarned = CalculateStarsEarned();
+        Debug.Log(starsEarned);
         DisplayStars(starsEarned);
         AmountItemsEarn.text = starsEarned.ToString();
         SaveStarsForLevel(levelCurrent, starsEarned);
@@ -38,7 +55,7 @@ public class StarLevelController : MonoBehaviour
         return starsEarned;
     }
 
-    private void DisplayStars(int starsEarned)
+    public void DisplayStars(int starsEarned)
     {
         for (int i = 0; i < maxStars; i++)
         {

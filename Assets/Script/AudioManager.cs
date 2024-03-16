@@ -17,6 +17,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip portalIn;
     public AudioClip portalOut;
     public AudioClip itemCollected;
+    public AudioClip buttonClick;
+    public AudioClip displayPanel;
+    public AudioClip winGame;
+    public AudioClip loseGame;
 
     private void Awake()
     {

@@ -20,7 +20,6 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
-        //fromPauseGame = true;
         AudioManager.instance.PauseMusic();
         Time.timeScale = 0;
         PausePanelIntro();
@@ -30,7 +29,7 @@ public class PauseMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync("Main Menu");
         MenuManager.instance.ShowMainMenu();
-        GameManager.instance.hideGameObject();
+        GameManager.instance.HideGameObject();
         AudioManager.instance.RestartMusic();
         if (pauseMenu != null && !pauseMenu.IsDestroyed())
         {
@@ -44,7 +43,7 @@ public class PauseMenu : MonoBehaviour
         AudioManager.instance.StopMusic();
         SceneManager.LoadScene("Main Menu");
         MenuManager.instance.ShowSelectLevelMenu();
-        GameManager.instance.hideGameObject();
+        GameManager.instance.HideGameObject();
         if (pauseMenu != null && !pauseMenu.IsDestroyed())
         {
             pauseMenu.SetActive(false);
@@ -87,12 +86,14 @@ public class PauseMenu : MonoBehaviour
     void PausePanelIntro()
     {
         canvasGroup.DOFade(1, tweenDuration).SetUpdate(true);
+        AudioManager.instance.PlaySFX(AudioManager.instance.displayPanel);
         pausePanelRect.DOAnchorPosY(middlePosY, tweenDuration).SetUpdate(true);
     }
 
     async Task PausePanelOutro()
     {
         canvasGroup.DOFade(0, tweenDuration).SetUpdate(true);
+        AudioManager.instance.PlaySFX(AudioManager.instance.displayPanel);
         await pausePanelRect.DOAnchorPosY(topPosY, tweenDuration).SetUpdate(true).AsyncWaitForCompletion();
     }
 }
