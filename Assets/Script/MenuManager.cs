@@ -49,4 +49,9 @@ public class MenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void TrophyBtn()
+    {
+        LevelTitleManager.instance.UpdateLevelTitle(3);
+    }
 }

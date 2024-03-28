@@ -46,7 +46,7 @@ public class StarLevelController : MonoBehaviour
     private int CalculateStarsEarned()
     {
         int itemsCollected = ItemController.GetItemsCollected();
-        int remainingLives = HeathManager.instance.GetRemainingLives();
+        int remainingLives = HealthManager.instance.GetRemainingLives();
         int starsEarned = itemsCollected - (maxStars - remainingLives);
         starsEarned = Mathf.Max(starsEarned, 0);
         starsEarned = Mathf.Clamp(starsEarned, 0, maxStars);

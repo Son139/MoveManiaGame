@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelTitleManager : MonoBehaviour
 {
-    public static LevelTitleManager instance; 
+    public static LevelTitleManager instance;
     public TextMeshProUGUI titleText;
 
     private void Awake()
@@ -21,8 +21,11 @@ public class LevelTitleManager : MonoBehaviour
 
     private void Start()
     {
-        int remainingLives = HeathManager.instance.GetRemainingLives();
-        UpdateLevelTitle(remainingLives);
+        if (HealthManager.instance != null)
+        {
+            int remainingLives = HealthManager.instance.GetRemainingLives();
+            UpdateLevelTitle(remainingLives);
+        }
     }
 
     public void UpdateLevelTitle(int remainingLives)

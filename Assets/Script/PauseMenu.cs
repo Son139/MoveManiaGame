@@ -68,7 +68,7 @@ public class PauseMenu : MonoBehaviour
         }
         ItemController.ResetItemsCollected();
         Timer.ResetTimer();
-        HeathManager.instance.ResetLives();
+        HealthManager.instance.ResetLives();
         Time.timeScale = 1;
     }
 

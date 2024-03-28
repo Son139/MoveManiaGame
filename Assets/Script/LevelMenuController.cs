@@ -10,8 +10,6 @@ public class LevelMenuController : MonoBehaviour
     public float disabledAlpha = 0.4f;
 
     public float delayTime = 0.5f;
-
-
     private void Awake()
     {
         SceneManager.sceneLoaded += OnSceneLoaded; // Đăng ký sự kiện khi scene được load
@@ -32,6 +30,7 @@ public class LevelMenuController : MonoBehaviour
     {
         int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
         int nextLevelToUnlock = PlayerPrefs.GetInt("NextLevelToUnlock", 1); // Lấy index của level cần mở khóa
+
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].interactable = false;
@@ -77,14 +76,15 @@ public class LevelMenuController : MonoBehaviour
 
     private IEnumerator LoadLevelWithDelay(string levelName)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(levelName);
-        // Đợi cho một phần nhỏ của frame hiện tại
         yield return null;
+
         AudioManager.instance.RestartMusic();
-        HeathManager.instance.ResetLives();
+        HealthManager.instance.ResetLives();
         Timer.ResetTimer();
         MenuManager.instance.HideMenuAll();
+
         GameManager.instance.SetupNewLevel();
     }
 }

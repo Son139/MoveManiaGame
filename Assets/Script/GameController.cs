@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
     {
         particleController.PlayParticle(ParticleController.Particles.die, transform.position);
         StartCoroutine(Respawn(0.5f));
-        HeathManager.instance.LoseLife();
+        HealthManager.instance.LoseLife();
     }
 
     IEnumerator Respawn(float duration)
