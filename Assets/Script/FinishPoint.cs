@@ -16,21 +16,18 @@ public class FinishPoint : MonoBehaviour
             if (goNextLevel)
             {
                 MarkNextLevelToUnlock();
-                //UnlockNextLevel();
+                setHighLevel();
                 completedLevel.SetActive(true);
                 LevelTween.instance.LevelComplete();
                 AudioManager.instance.PlaySFX(AudioManager.instance.winGame);
 
-                int remainingLives = HealthManager.instance.GetRemainingLives();
+                int remainingLives = HealthManager.instance.GetCurrentLives();
                 LevelTitleManager.instance.UpdateLevelTitle(remainingLives);
 
                 StarLevelController.instance.CompletedLevel();
                 LevelSelectMenuManager.Instance.UpdateStarMenuLevel();
 
                 Timer.StopTimer();
-                // Mở khóa level 2 ngay sau khi kết thúc level 1
-                //PlayerPrefs.SetInt("UnlockedLevel", 2);
-                //PlayerPrefs.Save();
             }
             else
             {
@@ -39,24 +36,26 @@ public class FinishPoint : MonoBehaviour
         }
     }
 
-    //void UnlockNextLevel()
-    //{
-    //    int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-    //    int reachedIndex = PlayerPrefs.GetInt("ReachedIndex", 1);
-
-    //    if (currentSceneIndex >= reachedIndex)
-    //    {
-    //        PlayerPrefs.SetInt("ReachedIndex", currentSceneIndex + 1);
-    //        PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", 1) + 1);
-    //        PlayerPrefs.Save();
-    //    }
-    //}
     void MarkNextLevelToUnlock()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextLevelIndex = currentSceneIndex + 1;
         PlayerPrefs.SetInt("NextLevelToUnlock", nextLevelIndex);
-        Debug.Log("lưu "+ nextLevelIndex);
+        Debug.Log("lưu " + nextLevelIndex);
         PlayerPrefs.Save();
     }
+
+    void setHighLevel()
+    {
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int savedHighLevelIndex = PlayerPrefs.GetInt("HighLevelIndex", 0); 
+        // So sánh index của cấp độ hiện tại với index của high level đã lưu
+        if (currentSceneIndex > savedHighLevelIndex)
+        {
+            PlayerPrefs.SetInt("HighLevelIndex", currentSceneIndex); 
+            PlayerPrefs.Save();
+            Debug.Log("Lưu high level với index: " + currentSceneIndex);
+        }
+    }
+
 }

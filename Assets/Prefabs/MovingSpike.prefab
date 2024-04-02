@@ -211,3 +211,33 @@ MonoBehaviour:
   waitDuration: 0.5
   ways: {fileID: 3154360375182051505}
   wayPoints: []
+--- !u!114 &8762546451436493583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8907243058769067912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: cbae82742b275fc70000000061a793b73165f24ad76cdf9f
+  m_ShapePath:
+  - {x: 0.08254945, y: 0.0032212734, z: 0}
+  - {x: 0.49770164, y: 0.8234649, z: 0}
+  - {x: 0.8660034, y: 0.10456252, z: 0}
+  - {x: 0.9170497, y: 0.008507729, z: 0}
+  m_ShapePathHash: 245996886
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -282100
+  m_LocalBounds:
+    m_Center: {x: 0.49979958, y: 0.41334307, z: 0}
+    m_Extent: {x: 0.41725013, y: 0.4101218, z: 0}

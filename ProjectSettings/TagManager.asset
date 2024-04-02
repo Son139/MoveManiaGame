@@ -9,6 +9,7 @@ TagManager:
   - Audio
   - Item
   - StarSystem
+  - CompletedLevel
   layers:
   - Default
   - TransparentFX

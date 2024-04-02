@@ -22,11 +22,11 @@ public class HealthManager : MonoBehaviour
         {
             instance = this;
         }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+    }
+
+    private void Start()
+    {
+        currentLives = maxLives;
     }
 
     public void LoseLife()

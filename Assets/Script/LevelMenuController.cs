@@ -28,7 +28,6 @@ public class LevelMenuController : MonoBehaviour
 
     public void InitializeButtons()
     {
-        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
         int nextLevelToUnlock = PlayerPrefs.GetInt("NextLevelToUnlock", 1); // Lấy index của level cần mở khóa
 
         for (int i = 0; i < buttons.Length; i++)
@@ -42,13 +41,6 @@ public class LevelMenuController : MonoBehaviour
             buttons[i].interactable = true;
             SetButtonState(buttons[i], true);
         }
-
-        // Mở khóa level tiếp theo nếu cần
-        //if (nextLevelToUnlock != -1 && nextLevelToUnlock <= buttons.Length)
-        //{
-        //    buttons[nextLevelToUnlock - 1].interactable = true;
-        //    SetButtonState(buttons[nextLevelToUnlock - 1], true);
-        //}
     }
 
     public void SetButtonState(Button button, bool interactable)
@@ -72,6 +64,7 @@ public class LevelMenuController : MonoBehaviour
     {
         string levelName = "Level " + levelId;
         StartCoroutine(LoadLevelWithDelay(levelName));
+
     }
 
     private IEnumerator LoadLevelWithDelay(string levelName)

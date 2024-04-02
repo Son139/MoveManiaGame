@@ -10,6 +10,14 @@ public class GameController : MonoBehaviour
     public ParticleController particleController;
 
     private bool isRespawning = false;
+
+    private CheckPoint checkPoint;
+
+    private void Awake()
+    {
+        // Tìm CheckPoint trong cảnh và lưu tham chiếu
+        checkPoint = FindObjectOfType<CheckPoint>();
+    }
     private void Start()
     {
         checkPointPos = transform.position;
@@ -47,7 +55,7 @@ public class GameController : MonoBehaviour
         transform.position = checkPointPos;
         transform.localScale = new Vector3(1, 1, 1);
         playerRb.simulated = true;
-        transform.rotation = Quaternion.identity;
+        transform.rotation = (checkPoint != null) ? checkPoint.GetPlayerRotation() : Quaternion.identity;
         movementController.UpdateRelativeTransform();
         isRespawning = false;
     }

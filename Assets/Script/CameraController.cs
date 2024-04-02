@@ -20,21 +20,23 @@ public class CameraController : MonoBehaviour
 
     public Vector3 positionOffset;
 
-    private float moveDelay = 1f; 
-    private float returnDelay = 1f; 
+    private float moveDelay = 1f;
+    private float returnDelay = 1f;
 
     [Header("Axis Limitation")]
     public Vector2 xLimit;
     public Vector2 yLimit;
 
+    public static bool cameraTargetPlayer;
+
     private void Awake()
     {
+        cameraTargetPlayer = false;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         GameObject[] itemObjects = GameObject.FindGameObjectsWithTag("Item");
         foreach (GameObject itemObject in itemObjects)
         {
             targets.Add(itemObject.transform);
-            Debug.Log(itemObject.transform.position);
         }
     }
 
@@ -77,13 +79,14 @@ public class CameraController : MonoBehaviour
         if (distanceY <= distanceThreshold)
         {
             currentTargetIndex++;
-            moveDelay = 1f; // Đặt lại thời gian chờ
+            moveDelay = 0.5f; // Đặt lại thời gian chờ
         }
     }
 
     private void ReturnToPlayer()
     {
-        Vector3 playerPosition = player.position + positionOffset;
+        cameraTargetPlayer = true;
+        Vector3 playerPosition = player.transform.position + positionOffset;
         playerPosition = new Vector3(Mathf.Clamp(playerPosition.x, xLimit.x, xLimit.y), Mathf.Clamp(playerPosition.y, yLimit.x, yLimit.y), -10);
         transform.position = Vector3.SmoothDamp(transform.position, playerPosition, ref velocity, smoothTime);
         camAnimator.SetInteger("CamTargetItemEnd", 1);

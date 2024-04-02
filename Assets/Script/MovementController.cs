@@ -13,7 +13,7 @@ public class MovementController : MonoBehaviour
     [Range(1, 10)]
     [SerializeField] float acceleration;
 
-    bool btnPressed;
+    public static bool btnPressed;
 
     bool isWallTouch;
     bool isFalling;
@@ -63,7 +63,7 @@ public class MovementController : MonoBehaviour
         // Kiểm tra va chạm với tường
         isWallTouch = Physics2D.OverlapBox(wallCheckPoint.position, new Vector2(0.06f, 0.6f), 0, wallLayer);
         // Nếu nhân vật đang rơi và va chạm với tường và không nên flip, thì mới thực hiện Flip
-        if (shouldFlip && isWallTouch )
+        if (shouldFlip && isWallTouch)
         {
             Flip();
         }
@@ -83,15 +83,18 @@ public class MovementController : MonoBehaviour
 
     public void Move(InputAction.CallbackContext value)
     {
-        if (value.started)
+        if (CameraController.cameraTargetPlayer)
         {
-            btnPressed = true;
-            speedMultiplier = 1f;
-        }
-        else if (value.canceled)
-        {
-            btnPressed = false;
-            speedMultiplier = 0;
+            if (value.started)
+            {
+                btnPressed = true;
+                speedMultiplier = 1f;
+            }
+            else if (value.canceled)
+            {
+                btnPressed = false;
+                speedMultiplier = 0;
+            }
         }
     }
 

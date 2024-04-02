@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +10,8 @@ public class CheckPoint : MonoBehaviour
     SpriteRenderer spriteRenderer;
     public Sprite passive, active;
     Collider2D coll;
+
+    private Quaternion playerRotation;
 
     private void Awake()
     {
@@ -26,6 +28,14 @@ public class CheckPoint : MonoBehaviour
             gameController.UpdateCheckPoint(respawnPoint.position);
             spriteRenderer.sprite = active;
             coll.enabled = false;
+
+            // Lưu hướng của nhân vật khi đi vào checkpoint
+            playerRotation = collision.transform.rotation;
         }
+    }
+
+    public Quaternion GetPlayerRotation()
+    {
+        return playerRotation;
     }
 }

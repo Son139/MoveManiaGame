@@ -19,16 +19,12 @@ public class StarLevelController : MonoBehaviour
     public float[] delays;
     public float scaleDuration = 1f;
 
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
         }
     }
 

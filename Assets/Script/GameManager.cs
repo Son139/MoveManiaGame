@@ -47,28 +47,15 @@ public class GameManager : MonoBehaviour
 
     public void SetupNewLevel()
     {
-        pauseSystem?.SetActive(true);
-        healthSystem?.SetActive(true);
-        finishPoint?.SetActive(true);
+        //pauseSystem?.SetActive(true);
+        //healthSystem?.SetActive(true);
+        //finishPoint?.SetActive(true);
     }
 
     public void HideGameObject()
     {
-        pauseSystem?.SetActive(false);
-        healthSystem?.SetActive(false);
-        finishPoint?.SetActive(false);
+        //pauseSystem?.SetActive(false);
+        //healthSystem?.SetActive(false);
+        //finishPoint?.SetActive(false);
     }
-
-
-    //IEnumerator LoadLevel()
-    //{
-    //    transitionAnim.SetTrigger("End");
-    //    yield return new WaitForSeconds(1);
-    //    SceneManager.LoadScene("Main Menu");
-    //    MenuManager.instance.ShowSelectLevelMenu();
-    //    hideGameObject();
-    //    Time.timeScale = 1;
-    //    HeathManager.instance.ResetLives();
-    //    transitionAnim.SetTrigger("Start");
-    //}
 }
