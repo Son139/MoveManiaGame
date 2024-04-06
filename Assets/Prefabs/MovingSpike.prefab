@@ -135,6 +135,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3154360374286517257}
     m_Modifications:
+    - target: {fileID: 856667025644660231, guid: 8b29956e43ca2e34f97d4113364bfd17, type: 3}
+      propertyPath: m_InstanceId
+      value: -18960
+      objectReference: {fileID: 0}
     - target: {fileID: 5592761600937576398, guid: 8b29956e43ca2e34f97d4113364bfd17, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -210,7 +214,9 @@ MonoBehaviour:
   speed: 2
   waitDuration: 0.5
   ways: {fileID: 3154360375182051505}
-  wayPoints: []
+  wayPoints:
+  - {fileID: 3154360374492145952}
+  - {fileID: 3154360373251490472}
 --- !u!114 &8762546451436493583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +243,7 @@ MonoBehaviour:
   - {x: 0.9170497, y: 0.008507729, z: 0}
   m_ShapePathHash: 245996886
   m_Mesh: {fileID: 0}
-  m_InstanceId: -282100
+  m_InstanceId: 58662
   m_LocalBounds:
     m_Center: {x: 0.49979958, y: 0.41334307, z: 0}
     m_Extent: {x: 0.41725013, y: 0.4101218, z: 0}

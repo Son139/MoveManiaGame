@@ -15,7 +15,6 @@ public class LevelTitleManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("delete");
             Destroy(gameObject);
         }
     }

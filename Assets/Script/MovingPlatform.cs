@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
+    [SerializeField] GameObject player;
     public float speed;
     Vector3 targetPos;
 
@@ -22,15 +23,10 @@ public class MovingPlatform : MonoBehaviour
 
     private void Awake()
     {
-        movementCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementController>();
+        movementCtrl = player.GetComponent<MovementController>();
         rb = GetComponent<Rigidbody2D>();
-        playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        playerRb = player.GetComponent<Rigidbody2D>();
 
-        wayPoints = new Transform[ways.transform.childCount];
-        for (int i = 0; i < ways.gameObject.transform.childCount; i++)
-        {
-            wayPoints[i] = ways.transform.GetChild(i).gameObject.transform;
-        }
     }
 
     private void Start()

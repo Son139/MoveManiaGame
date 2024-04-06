@@ -101,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   camAnimator: {fileID: 7228520310017268897}
+  itemObjects: []
+  player: {fileID: 247946865574301519, guid: 40b4731e74900a344b5d5c0e62dddf12, type: 3}
   smoothTime: 0.2
   positionOffset: {x: 0, y: 0, z: 0}
   xLimit: {x: 0, y: 0}

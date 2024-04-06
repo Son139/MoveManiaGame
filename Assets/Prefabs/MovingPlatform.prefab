@@ -224,9 +224,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b31ce703d3e8f45aa8cf49f7061e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 247946865574301519, guid: 40b4731e74900a344b5d5c0e62dddf12, type: 3}
   speed: 2
   ways: {fileID: 3784269675943738583}
-  wayPoints: []
+  wayPoints:
+  - {fileID: 3784269676050894407}
+  - {fileID: 3784269675780837834}
   waitDuration: 0
 --- !u!61 &3784269676021752040
 BoxCollider2D:
@@ -280,7 +283,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 48916
+  m_InstanceId: 84868
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}

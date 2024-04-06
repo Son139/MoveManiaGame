@@ -139,7 +139,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 0
   m_Mesh: {fileID: 0}
-  m_InstanceId: 27776
+  m_InstanceId: 126126
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}
@@ -158,7 +158,9 @@ MonoBehaviour:
   speed: 1
   waitDuration: 0.37
   ways: {fileID: 4989602240752412840}
-  wayPoints: []
+  wayPoints:
+  - {fileID: 4989602240452833130}
+  - {fileID: 4989602241056077949}
 --- !u!1 &4989602240289889668
 GameObject:
   m_ObjectHideFlags: 0

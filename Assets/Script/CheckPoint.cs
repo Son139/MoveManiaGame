@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
+    [SerializeField] GameObject player;
     GameController gameController;
     public Transform respawnPoint;
 
@@ -15,7 +16,7 @@ public class CheckPoint : MonoBehaviour
 
     private void Awake()
     {
-        gameController = GameObject.FindGameObjectWithTag("Player").GetComponent<GameController>();
+        gameController = player.GetComponent<GameController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         coll = GetComponent<Collider2D>();
     }
