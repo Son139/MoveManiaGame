@@ -11,6 +11,7 @@ public class LevelTween : MonoBehaviour
     [SerializeField]
     GameObject panelCompletedLevel, homeButton, replayButton, nextLevel, itemCollected, itemImg, colorWheel,
     starFilled1, starFilled2, starFilled3, starEmpty1, starEmpty2, starEmpty3;
+
     private void Awake()
     {
         if (instance == null)
@@ -41,12 +42,12 @@ public class LevelTween : MonoBehaviour
             .setOnUpdate((float t) =>
             {
                 rectTransform.sizeDelta = Vector2.Lerp(originalSize, targetSize, t);
-            })
-            .setOnComplete(() =>
-            {
-                LeanTween.rotateAround(colorWheel, Vector3.forward, -360, 10f)
-                    .setLoopClamp();
             });
+            //.setOnComplete(() =>
+            //{
+            //    LeanTween.rotateAround(colorWheel, Vector3.forward, -360, 10f)
+            //        .setLoopClamp();
+            //});
         LeanTween.moveLocal(panelCompletedLevel, new Vector3(0f, 0f, 0f), 0.5f).setDelay(.1f).setEase(LeanTweenType.easeOutCirc);
         LeanTween.scale(homeButton, new Vector3(1f, 1f, 1f), 2f).setDelay(.3f).setEase(LeanTweenType.easeOutElastic);
         LeanTween.scale(nextLevel, new Vector3(1f, 1f, 1f), 2f).setDelay(.4f).setEase(LeanTweenType.easeOutElastic);

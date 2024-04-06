@@ -4637,7 +4637,7 @@ Transform:
   - {fileID: 759319202}
   - {fileID: 779612251}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &711638629
 MonoBehaviour:
@@ -5294,7 +5294,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   starFilled: {fileID: -1507387797, guid: 7bb12e1a1363c514bb9ee72a9acafce2, type: 3}
-  starSystems: []
+  starSystems:
+  - {fileID: 1263286136}
+  - {fileID: 1694167524}
+  - {fileID: 2100135769}
+  - {fileID: 1501126714}
+  - {fileID: 1896866211}
+  - {fileID: 31388331}
+  - {fileID: 2065081295}
+  - {fileID: 1553122436}
+  - {fileID: 615200904}
+  - {fileID: 700719891}
+  - {fileID: 1206938488}
+  - {fileID: 1461809520}
+  - {fileID: 366838395}
+  - {fileID: 249733520}
+  - {fileID: 1250824563}
+  - {fileID: 2094932753}
+  - {fileID: 148680758}
+  - {fileID: 746548836}
 --- !u!1 &785934978
 GameObject:
   m_ObjectHideFlags: 0
@@ -6101,7 +6119,7 @@ Transform:
   - {fileID: 610112504}
   - {fileID: 16858867}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &902158020
 GameObject:
@@ -9157,7 +9175,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1263286136
 GameObject:

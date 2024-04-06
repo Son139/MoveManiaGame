@@ -7,7 +7,8 @@ public class LevelSelectMenuManager : MonoBehaviour
 {
     public Sprite starFilled;
 
-    public List<GameObject> starSystems = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> starSystems = new List<GameObject>();
 
     private static LevelSelectMenuManager instance;
     public static LevelSelectMenuManager Instance { get { return instance; } }
@@ -20,23 +21,6 @@ public class LevelSelectMenuManager : MonoBehaviour
             return;
         }
         instance = this;
-    }
-
-    private void Start()
-    {
-        FindStarSystems();
-    }
-
-    void FindStarSystems()
-    {
-        // Tìm tất cả các GameObject có chứa starSystem component
-        GameObject[] starSystemObjects = GameObject.FindGameObjectsWithTag("StarSystem");
-
-        // Lưu trữ các starSystem vào danh sách
-        foreach (GameObject starSystemObject in starSystemObjects)
-        {
-            starSystems.Add(starSystemObject);
-        }
     }
 
     public void UpdateStarMenuLevel()

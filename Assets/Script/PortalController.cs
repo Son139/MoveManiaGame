@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PortalController : MonoBehaviour
 {
+    [SerializeField] GameObject player;
     public Transform destination;
-    GameObject player;
     Animation anim;
     Rigidbody2D playerRb;
 
@@ -13,7 +13,6 @@ public class PortalController : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         anim = player.GetComponent<Animation>();
         playerRb = player.GetComponent<Rigidbody2D>();
         movementController = player.GetComponent<MovementController>();

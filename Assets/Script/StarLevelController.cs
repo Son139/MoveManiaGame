@@ -46,7 +46,7 @@ public class StarLevelController : MonoBehaviour
         int starsEarned = itemsCollected - (maxStars - remainingLives);
         starsEarned = Mathf.Max(starsEarned, 0);
         starsEarned = Mathf.Clamp(starsEarned, 0, maxStars);
-
+        
         return starsEarned;
     }
 
@@ -81,7 +81,6 @@ public class StarLevelController : MonoBehaviour
     public void SaveStarsForLevel(int levelIndex, int starsEarned)
     {
         string key = "StarsForLevel" + levelIndex;
-        Debug.Log(key+ " số sao " + starsEarned);
         PlayerPrefs.SetInt(key, starsEarned);
         PlayerPrefs.Save();
     }

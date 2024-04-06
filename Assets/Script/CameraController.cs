@@ -7,8 +7,9 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] Animator camAnimator;
+    [SerializeField] private GameObject[] itemObjects;
+    [SerializeField] GameObject player;
 
-    private Transform player;
     private List<Transform> targets = new List<Transform>();
     private int currentTargetIndex = 0;
     private Vector3 velocity = Vector3.zero;
@@ -32,8 +33,7 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         cameraTargetPlayer = false;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        GameObject[] itemObjects = GameObject.FindGameObjectsWithTag("Item");
+        
         foreach (GameObject itemObject in itemObjects)
         {
             targets.Add(itemObject.transform);

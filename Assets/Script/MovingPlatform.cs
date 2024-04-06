@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
@@ -19,6 +19,7 @@ public class MovingPlatform : MonoBehaviour
     int direction = 1;
 
     public float waitDuration;
+
     private void Awake()
     {
         movementCtrl = GameObject.FindGameObjectWithTag("Player").GetComponent<MovementController>();
@@ -57,7 +58,6 @@ public class MovingPlatform : MonoBehaviour
     {
         transform.position = targetPos;
         moveDirection = Vector3.zero;
-
         if (pointIndex == pointCount - 1)
         {
             direction = -1;
@@ -70,7 +70,6 @@ public class MovingPlatform : MonoBehaviour
 
         pointIndex += direction;
         targetPos = wayPoints[pointIndex].transform.position;
-
         StartCoroutine(WaitNextPoint());
     }
 

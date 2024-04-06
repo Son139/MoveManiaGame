@@ -40,10 +40,17 @@ public class HealthManager : MonoBehaviour
             AudioManager.instance.PlaySFX(AudioManager.instance.loseGame);
             completedLevel.SetActive(true);
             LevelTween.instance.LevelComplete();
-            //StarLevelController.instance.DisplayStars(0);
             StarLevelController.instance.CompletedLevel();
+            StartCoroutine(PauseGameAfterDelay(1.4f)); 
         }
     }
+
+    public IEnumerator PauseGameAfterDelay(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay); 
+        Time.timeScale = 0f; 
+    }
+
 
     private void UpdateHeartUI()
     {

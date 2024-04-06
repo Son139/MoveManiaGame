@@ -41,7 +41,7 @@ public class MovementController : MonoBehaviour
         particleCtrl = FindObjectOfType<ParticleController>();
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         UpdateSpeedMultiplier();
 
